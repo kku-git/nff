@@ -143,12 +143,14 @@ header {
     background-color: white;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+
     .image-container {
-      margin-bottom: 60px; /* 이미지와 footer 사이 간격 설정 */
+      padding: 1.2vw;
     }
     .bg-image {
+      padding: 1.2vw;
       width: 100%; /* 두 번째 이미지를 100%로 설정 */
     }
     .logo-image {
@@ -158,6 +160,7 @@ header {
   }
   //  밑에 푸터
   footer {
+    padding: 1.2vw;
     width: 21.3vw;
     color: $text_color;
     font-size: 0.7vw;
@@ -169,7 +172,6 @@ header {
 
 // 서브페이지 아이템
 .item-container {
-  margin-bottom: 60px;
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* 3열로 균등 분할 */
   gap: 2vw; /* 아이템 간 간격 */
@@ -217,5 +219,19 @@ header {
       transform-origin: center center;
       transform: scale(1.2); /* 이미지 확대 */
     }
+  }
+}
+
+.pages {
+  color: $text_color;
+  font-size: 1vw;
+  width: 100%;
+  padding: 1vw;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  ol {
+    display: flex;
+    gap: 15px;
   }
 }

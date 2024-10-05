@@ -150,13 +150,14 @@ header li {
   background-color: white;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
 .container main .image-container {
-  margin-bottom: 60px; /* 이미지와 footer 사이 간격 설정 */
+  padding: 1.2vw;
 }
 .container main .bg-image {
+  padding: 1.2vw;
   width: 100%; /* 두 번째 이미지를 100%로 설정 */
 }
 .container main .logo-image {
@@ -164,6 +165,7 @@ header li {
   height: 12.4vw;
 }
 .container footer {
+  padding: 1.2vw;
   width: 21.3vw;
   color: #c98181;
   font-size: 0.7vw;
@@ -172,7 +174,6 @@ header li {
 }
 
 .item-container {
-  margin-bottom: 60px;
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* 3열로 균등 분할 */
   gap: 2vw; /* 아이템 간 간격 */
@@ -218,4 +219,18 @@ header li {
 .item-container .item:hover img {
   transform-origin: center center;
   transform: scale(1.2); /* 이미지 확대 */
+}
+
+.pages {
+  color: #c98181;
+  font-size: 1vw;
+  width: 100%;
+  padding: 1vw;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+.pages ol {
+  display: flex;
+  gap: 15px;
 }/*# sourceMappingURL=main.css.map */
