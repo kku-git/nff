@@ -1,19 +1,24 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-function FingerItems({ currentPage, itemsPerPage }) {
+function FingerItems({ currentPage, itemsPerPage, updateTotalPages }) {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
     axios
       .get("https://kku-git.github.io/nff_product/fingers.json")
       .then((response) => {
-        setItems(response.data);
+        const fetchedItems = response.data;
+        setItems(fetchedItems);
+
+        // 총 페이지 수 계산 및 업데이트
+        const totalPages = Math.ceil(fetchedItems.length / itemsPerPage);
+        updateTotalPages(totalPages); // 부모 컴포넌트에 페이지 수 업데이트
       })
       .catch(() => {
         console.log("실패함");
       });
-  }, []);
+  }, [itemsPerPage]);
 
   if (items.length === 0) {
     return <p>LOADING...</p>;

@@ -15,13 +15,13 @@ function LeftSidebar(props) {
           <a href="#">SHOP</a>
           {props.isShopHovered && (
             <ul className="dropdown-content">
-              <li>
+              <li onClick={() => props.handleCategoryChange("hair")}>
                 <Link to="/shop/hair">for hair</Link>
               </li>
-              <li>
+              <li onClick={() => props.handleCategoryChange("neck")}>
                 <Link to="/shop/neck">for neck</Link>
               </li>
-              <li>
+              <li onClick={() => props.handleCategoryChange("fingers")}>
                 <Link to="/shop/fingers">for fingers</Link>
               </li>
             </ul>

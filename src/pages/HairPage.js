@@ -26,6 +26,7 @@ function HairPage(props) {
           isShopHovered={props.isShopHovered}
           setIsBoardHovered={props.setIsBoardHovered}
           isBoardHovered={props.isBoardHovered}
+          handleCategoryChange={props.handleCategoryChange}
         />
 
         {/* 중앙 메인 콘텐츠 */}
@@ -40,7 +41,11 @@ function HairPage(props) {
             </Link>
           </div>
           {/* items */}
-          <HairItems currentPage={props.currentPage} itemsPerPage={9} />
+          <HairItems
+            currentPage={props.currentPage}
+            itemsPerPage={9}
+            updateTotalPages={props.updateTotalPages}
+          />
           {/* pages */}
           <Pagination
             currentPage={props.currentPage}

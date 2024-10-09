@@ -24,6 +24,7 @@ function MainPage(props) {
           isShopHovered={props.isShopHovered}
           setIsBoardHovered={props.setIsBoardHovered}
           isBoardHovered={props.isBoardHovered}
+          handleCategoryChange={props.handleCategoryChange}
         />
 
         {/* 중앙 메인 콘텐츠 */}

@@ -27,6 +27,7 @@ function NeckPage(props) {
           isShopHovered={props.isShopHovered}
           setIsBoardHovered={props.setIsBoardHovered}
           isBoardHovered={props.isBoardHovered}
+          handleCategoryChange={props.handleCategoryChange}
         />
 
         {/* 중앙 메인 콘텐츠 */}
@@ -41,7 +42,11 @@ function NeckPage(props) {
             </Link>
           </div>
           {/* items */}
-          <NeckItems currentPage={props.currentPage} itemsPerPage={9} />
+          <NeckItems
+            currentPage={props.currentPage}
+            itemsPerPage={9}
+            updateTotalPages={props.updateTotalPages}
+          />
           {/* pages */}
           <Pagination
             currentPage={props.currentPage}
