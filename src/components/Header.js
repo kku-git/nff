@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function Header() {
   return (
     <header>
@@ -8,7 +10,7 @@ function Header() {
           </a>
         </li>
         <li>
-          <a href="/member/join.html">Free shipping over 80,000KRW </a>
+          <Link to="/member/join.html">Free shipping over 80,000KRW </Link>
         </li>
       </ul>
     </header>

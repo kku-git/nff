@@ -7,7 +7,7 @@ function SearchOverlay(props) {
           props.setSearch(false);
         }}
       ></div>
-      {/* <!-- 검색창 --> */}
+      {/* 검색창 */}
       <div className="search">
         <input
           type="text"

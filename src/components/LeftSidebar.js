@@ -5,14 +5,14 @@ function LeftSidebar(props) {
     <aside className="sidebar">
       <ul className="category">
         <li onClick={() => props.setSearch(true)}>
-          <a href="#">SEARCH</a>
+          <Link to="/">SEARCH</Link>
         </li>
         <li
           onMouseOver={() => props.setIsShopHovered(true)}
           onMouseOut={() => props.setIsShopHovered(false)}
           className="dropdown"
         >
-          <a href="#">SHOP</a>
+          <Link to="/">SHOP</Link>
           {props.isShopHovered && (
             <ul className="dropdown-content">
               <li onClick={() => props.handleCategoryChange("hair")}>
@@ -32,14 +32,14 @@ function LeftSidebar(props) {
           onMouseOut={() => props.setIsBoardHovered(false)}
           className="dropdown"
         >
-          <a href="#">BOARD</a>
+          <Link to="/">BOARD</Link>
           {props.isBoardHovered && (
             <ul className="dropdown-content">
               <li>
-                <a href="#">notice</a>
+                <Link to="/notice">notice</Link>
               </li>
               <li>
-                <a href="#">q / a</a>
+                <Link to="/q-a">q / a</Link>
               </li>
             </ul>
           )}

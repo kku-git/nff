@@ -4,20 +4,20 @@ import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 function Pagination({ currentPage, totalPages, onPageChange }) {
   return (
     <div className="pages">
-      {/* Previous Page Button */}
-      <a
-        href="#"
+      {/* 페이지 버튼 */}
+      <span
         onClick={(e) => {
           e.preventDefault();
           if (currentPage > 1) {
             onPageChange(currentPage - 1);
           }
         }}
+        style={{ cursor: "pointer" }}
       >
         <FontAwesomeIcon icon={faAngleLeft} />
-      </a>
+      </span>
 
-      {/* Page Numbers */}
+      {/* 페이지 넘버 */}
       <ol>
         {Array.from({ length: totalPages }, (_, i) => (
           <li
@@ -28,23 +28,23 @@ function Pagination({ currentPage, totalPages, onPageChange }) {
               fontWeight: currentPage === i + 1 ? "bold" : "normal",
             }}
           >
-            <a href="#">{i + 1}</a>
+            <span>{i + 1}</span>
           </li>
         ))}
       </ol>
 
-      {/* Next Page Button */}
-      <a
-        href="#"
+      {/* 다음 페이지 버튼 */}
+      <span
         onClick={(e) => {
           e.preventDefault();
           if (currentPage < totalPages) {
             onPageChange(currentPage + 1);
           }
         }}
+        style={{ cursor: "pointer" }}
       >
         <FontAwesomeIcon icon={faAngleRight} />
-      </a>
+      </span>
     </div>
   );
 }

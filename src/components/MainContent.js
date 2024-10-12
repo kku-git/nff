@@ -20,7 +20,6 @@ function MainContent() {
           className="bg-image"
         />
       </div>{" "}
-      {/* pages */}
       {/* Footer */}
       <Footer />
     </main>

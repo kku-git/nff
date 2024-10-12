@@ -1,18 +1,20 @@
+import { Link } from "react-router-dom";
+
 function RightSidebar() {
   return (
     <aside className="sidebar">
       <ul className="category">
         <li>
-          <a href="#">LOGIN</a>
+          <Link to="/">LOGIN</Link>
         </li>
         <li>
-          <a href="#">CART</a>
+          <Link to="/">CART</Link>
         </li>
         <li>
-          <a href="#">ORDER</a>
+          <Link to="/">ORDER</Link>
         </li>
         <li>
-          <a href="#">MY PAGE</a>
+          <Link to="/">MY PAGE</Link>
         </li>
       </ul>
     </aside>

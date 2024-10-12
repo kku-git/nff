@@ -18,7 +18,7 @@ function FingerItems({ currentPage, itemsPerPage, updateTotalPages }) {
       .catch(() => {
         console.log("실패함");
       });
-  }, [itemsPerPage]);
+  }, [itemsPerPage, updateTotalPages]);
 
   if (items.length === 0) {
     return <p>LOADING...</p>;
