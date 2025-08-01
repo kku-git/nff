@@ -1,17 +1,21 @@
+import Header from "../components/Header";
 import LeftSidebar from "../components/LeftSidebar";
 import RightSidebar from "../components/RightSidebar";
-import MainContent from "../components/MainContent";
-import Header from "../components/Header";
 import SearchOverlay from "../components/SearchOverlay";
+import WishListContent from "../components/WishListContent";
 
-function MainPage(props) {
+function WishListPage(props) {
   return (
     <div className="wrapper">
-      {props.Search && <SearchOverlay setSearch={props.setSearch} />}
+      {/* 검색창 */}
+      {props.Search === true && <SearchOverlay setSearch={props.setSearch} />}
+
+      {/* 헤더 */}
       <Header />
 
+      {/* 컨테이너 시작 */}
       <div className="container">
-        {/* 왼쪽 사이드바: className에 open 여부 전달 */}
+        {/* 왼쪽 aside */}
         <LeftSidebar
           className={props.leftSidebarToggle ? "open" : ""}
           setSearch={props.setSearch}
@@ -23,12 +27,13 @@ function MainPage(props) {
           setLeftSidebarToggle={props.setLeftSidebarToggle}
         />
 
-        {/* 메인 콘텐츠: 사이드바 열기 함수 전달 */}
-        <MainContent
+        {/* 중앙 메인 콘텐츠 */}
+        <WishListContent
           setLeftSidebarToggle={props.setLeftSidebarToggle}
           setRightSidebarToggle={props.setRightSidebarToggle}
         />
 
+        {/* 우측 aside */}
         <RightSidebar
           className={props.rightSidebarToggle ? "open" : ""}
           setRightSidebarToggle={props.setRightSidebarToggle}
@@ -37,5 +42,4 @@ function MainPage(props) {
     </div>
   );
 }
-
-export default MainPage;
+export default WishListPage;

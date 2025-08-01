@@ -18,7 +18,7 @@ function NeckItems({ currentPage, itemsPerPage, updateTotalPages }) {
       .catch(() => {
         console.log("실패함");
       });
-  }, [itemsPerPage, updateTotalPages]);
+  }, [itemsPerPage]);
 
   if (items.length === 0) {
     return <p>LOADING...</p>;

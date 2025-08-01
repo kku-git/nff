@@ -2,14 +2,18 @@ import { Link } from "react-router-dom";
 
 function LeftSidebar(props) {
   return (
-    <aside className="sidebar sidebar-left">
+    <aside
+      className={`sidebar sidebar-left ${props.className}`}
+      onMouseEnter={() => props.setLeftSidebarToggle(true)}
+      onMouseLeave={() => props.setLeftSidebarToggle(false)}
+    >
       <ul className="category">
         <li onClick={() => props.setSearch(true)}>
-          <Link to="/">SEARCH</Link>
+          <Link>SEARCH</Link>
         </li>
         <li
-          onMouseOver={() => props.setIsShopHovered(true)}
-          onMouseOut={() => props.setIsShopHovered(false)}
+          onMouseEnter={() => props.setIsShopHovered(true)}
+          onMouseLeave={() => props.setIsShopHovered(false)}
           className="dropdown"
         >
           <Link to="/">SHOP</Link>

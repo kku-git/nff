@@ -6,21 +6,30 @@ import FingerPage from "./pages/FingerPage";
 import NeckPage from "./pages/NeckPage";
 import HairPage from "./pages/HairPage";
 import CartPage from "./pages/CartPage";
+import WishListPage from "./pages/WishListPage";
+import DetailPage from "./pages/DetailPage";
 
 function App() {
+  // 사이드바 열고 닫기
+  const [leftSidebarToggle, setLeftSidebarToggle] = useState(false);
+  const [rightSidebarToggle, setRightSidebarToggle] = useState(false);
+
   // 카테고리 버튼
   let [isShopHovered, setIsShopHovered] = useState(false);
   let [isBoardHovered, setIsBoardHovered] = useState(false);
+
   // 검색창 버튼
   let [Search, setSearch] = useState(false);
 
   // 페이지 상태 정의
   const [currentPage, setCurrentPage] = useState(1); // 현재 페이지 상태
   const [totalPages, setTotalPages] = useState(1);
+
   // 페이지 변경 핸들러
   function handlePageChange(page) {
     setCurrentPage(page); // 페이지를 변경할 때 상태를 업데이트
   }
+
   // 총 페이지 수 업데이트
   function updateTotalPages(pages) {
     setTotalPages(pages);
@@ -52,6 +61,10 @@ function App() {
             isBoardHovered={isBoardHovered}
             setIsBoardHovered={setIsBoardHovered}
             handleCategoryChange={handleCategoryChange}
+            leftSidebarToggle={leftSidebarToggle}
+            setLeftSidebarToggle={setLeftSidebarToggle}
+            rightSidebarToggle={rightSidebarToggle}
+            setRightSidebarToggle={setRightSidebarToggle}
           />
         }
       />
@@ -71,6 +84,10 @@ function App() {
             onPageChange={handlePageChange}
             updateTotalPages={updateTotalPages}
             handleCategoryChange={handleCategoryChange}
+            leftSidebarToggle={leftSidebarToggle}
+            setLeftSidebarToggle={setLeftSidebarToggle}
+            rightSidebarToggle={rightSidebarToggle}
+            setRightSidebarToggle={setRightSidebarToggle}
           />
         }
       />
@@ -89,6 +106,10 @@ function App() {
             onPageChange={handlePageChange}
             updateTotalPages={updateTotalPages}
             handleCategoryChange={handleCategoryChange}
+            leftSidebarToggle={leftSidebarToggle}
+            setLeftSidebarToggle={setLeftSidebarToggle}
+            rightSidebarToggle={rightSidebarToggle}
+            setRightSidebarToggle={setRightSidebarToggle}
           />
         }
       />
@@ -107,6 +128,10 @@ function App() {
             onPageChange={handlePageChange}
             updateTotalPages={updateTotalPages}
             handleCategoryChange={handleCategoryChange}
+            leftSidebarToggle={leftSidebarToggle}
+            setLeftSidebarToggle={setLeftSidebarToggle}
+            rightSidebarToggle={rightSidebarToggle}
+            setRightSidebarToggle={setRightSidebarToggle}
           />
         }
       />
@@ -121,9 +146,50 @@ function App() {
             isBoardHovered={isBoardHovered}
             setIsBoardHovered={setIsBoardHovered}
             handleCategoryChange={handleCategoryChange}
+            leftSidebarToggle={leftSidebarToggle}
+            setLeftSidebarToggle={setLeftSidebarToggle}
+            rightSidebarToggle={rightSidebarToggle}
+            setRightSidebarToggle={setRightSidebarToggle}
           />
         }
       />
+      <Route
+        path="/wishlist"
+        element={
+          <WishListPage
+            Search={Search}
+            setSearch={setSearch}
+            isShopHovered={isShopHovered}
+            setIsShopHovered={setIsShopHovered}
+            isBoardHovered={isBoardHovered}
+            setIsBoardHovered={setIsBoardHovered}
+            handleCategoryChange={handleCategoryChange}
+            leftSidebarToggle={leftSidebarToggle}
+            setLeftSidebarToggle={setLeftSidebarToggle}
+            rightSidebarToggle={rightSidebarToggle}
+            setRightSidebarToggle={setRightSidebarToggle}
+          />
+        }
+      />
+      <Route
+        path="/detail/:category/:id"
+        element={
+          <DetailPage
+            Search={Search}
+            setSearch={setSearch}
+            isShopHovered={isShopHovered}
+            setIsShopHovered={setIsShopHovered}
+            isBoardHovered={isBoardHovered}
+            setIsBoardHovered={setIsBoardHovered}
+            handleCategoryChange={handleCategoryChange}
+            leftSidebarToggle={leftSidebarToggle}
+            setLeftSidebarToggle={setLeftSidebarToggle}
+            rightSidebarToggle={rightSidebarToggle}
+            setRightSidebarToggle={setRightSidebarToggle}
+          />
+        }
+      />
+
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );

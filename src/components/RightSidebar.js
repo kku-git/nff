@@ -1,8 +1,12 @@
 import { Link } from "react-router-dom";
 
-function RightSidebar() {
+function RightSidebar(props) {
   return (
-    <aside className="sidebar sidebar-right">
+    <aside
+      className={`sidebar sidebar-right ${props.className}`}
+      onMouseEnter={() => props.setRightSidebarToggle(true)}
+      onMouseLeave={() => props.setRightSidebarToggle(false)}
+    >
       <ul className="category">
         <li>
           <Link to="/">LOGIN</Link>
@@ -11,7 +15,10 @@ function RightSidebar() {
           <Link to="/cart">CART</Link>
         </li>
         <li>
-          <Link to="/">ORDER</Link>
+          <Link to="/detail/:category/:id">ORDER</Link>
+        </li>
+        <li>
+          <Link to="/wishlist">WISH LIST</Link>
         </li>
         <li>
           <Link to="/">MY PAGE</Link>

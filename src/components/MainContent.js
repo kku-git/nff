@@ -1,26 +1,20 @@
-import { Link } from "react-router-dom";
 import Footer from "./Footer";
+import Logo from "./Logo";
 
-function MainContent() {
+function MainContent(props) {
   return (
     <main>
-      <div className="image-container">
-        <Link to="/">
-          <img
-            src="https://kku-git.github.io/nff_product/logo.svg"
-            alt="로고"
-            className="logo-image"
-          />
-        </Link>
-      </div>
+      <Logo
+        setLeftSidebarToggle={props.setLeftSidebarToggle}
+        setRightSidebarToggle={props.setRightSidebarToggle}
+      />
       <div className="image-container">
         <img
           src="https://kku-git.github.io/nff_product/nff_bg.svg"
           alt="배경"
           className="bg-image"
         />
-      </div>{" "}
-      {/* Footer */}
+      </div>
       <Footer />
     </main>
   );

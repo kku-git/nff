@@ -17,19 +17,27 @@ function CartPage(props) {
       <div className="container">
         {/* 왼쪽 aside */}
         <LeftSidebar
+          className={props.leftSidebarToggle ? "open" : ""}
           setSearch={props.setSearch}
           setIsShopHovered={props.setIsShopHovered}
           isShopHovered={props.isShopHovered}
           setIsBoardHovered={props.setIsBoardHovered}
           isBoardHovered={props.isBoardHovered}
           handleCategoryChange={props.handleCategoryChange}
+          setLeftSidebarToggle={props.setLeftSidebarToggle}
         />
 
         {/* 중앙 메인 콘텐츠 */}
-        <CartContent />
+        <CartContent
+          setLeftSidebarToggle={props.setLeftSidebarToggle}
+          setRightSidebarToggle={props.setRightSidebarToggle}
+        />
 
         {/* 우측 aside */}
-        <RightSidebar />
+        <RightSidebar
+          className={props.rightSidebarToggle ? "open" : ""}
+          setRightSidebarToggle={props.setRightSidebarToggle}
+        />
       </div>
     </div>
   );
