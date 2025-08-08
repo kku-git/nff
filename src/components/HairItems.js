@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-
+import { Link } from "react-router-dom";
 function HairItems({ currentPage, itemsPerPage, updateTotalPages }) {
   const [items, setItems] = useState([]);
 
@@ -23,7 +23,6 @@ function HairItems({ currentPage, itemsPerPage, updateTotalPages }) {
     return <p>LOADING...</p>;
   }
 
-  // Calculate the index range for current page
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const currentItems = items.slice(startIndex, endIndex);
@@ -38,12 +37,14 @@ function HairItems({ currentPage, itemsPerPage, updateTotalPages }) {
               <p>{a.price}</p>
             </div>
           </div>
-          <img
-            src={`https://kku-git.github.io/nff_product/hair/hair${
-              startIndex + i + 1
-            }.jpg`}
-            alt={`hair ${startIndex + i + 1}`}
-          />
+          <Link to={`/detail/hair/${a.id}`}>
+            <img
+              src={`https://kku-git.github.io/nff_product/hair/hair${
+                startIndex + i + 1
+              }.jpg`}
+              alt={`hair ${startIndex + i + 1}`}
+            />
+          </Link>
         </div>
       ))}
     </div>
