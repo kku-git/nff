@@ -29,24 +29,28 @@ function HairItems({ currentPage, itemsPerPage, updateTotalPages }) {
 
   return (
     <div className="item-container">
-      {currentItems.map((a, i) => (
-        <div key={i} className="item">
-          <div className="overlay-wrap">
-            <div className="overlay">
-              <p>{a.title}</p>
-              <p>{a.price}</p>
-            </div>
+      {currentItems.map((a, i) => {
+        return (
+          <div key={i} className="item">
+            {" "}
+            <Link to={`/detail/hair/${a.id}`}>
+              <div className="overlay-wrap">
+                <div className="overlay">
+                  <p>{a.title}</p>
+                  <p>{a.price}</p>
+                </div>
+              </div>
+
+              <img
+                src={`https://kku-git.github.io/nff_product/hair/hair${
+                  startIndex + i + 1
+                }.jpg`}
+                alt={`hair ${startIndex + i + 1}`}
+              />
+            </Link>
           </div>
-          <Link to={`/detail/hair/${a.id}`}>
-            <img
-              src={`https://kku-git.github.io/nff_product/hair/hair${
-                startIndex + i + 1
-              }.jpg`}
-              alt={`hair ${startIndex + i + 1}`}
-            />
-          </Link>
-        </div>
-      ))}
+        );
+      })}
     </div>
   );
 }
