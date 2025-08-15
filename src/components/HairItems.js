@@ -32,7 +32,6 @@ function HairItems({ currentPage, itemsPerPage, updateTotalPages }) {
       {currentItems.map((a, i) => {
         return (
           <div key={i} className="item">
-            {" "}
             <Link to={`/detail/hair/${a.id}`}>
               <div className="overlay-wrap">
                 <div className="overlay">

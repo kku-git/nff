@@ -1,6 +1,20 @@
+import axios from "axios";
 import Footer from "./Footer";
 import Logo from "./Logo";
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+
 function DetailContent(props) {
+  const { category, id } = useParams();
+  const [product, setProduct] = useState(null);
+
+  useEffect(() => {
+    axios
+      .get("https://kku-git.github.io/nff_product/hair.json")
+      .then(() => {})
+      .catch(() => {});
+  }, [id]);
+
   return (
     <main>
       <Logo
