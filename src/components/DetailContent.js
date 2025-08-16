@@ -10,11 +10,17 @@ function DetailContent(props) {
 
   useEffect(() => {
     axios
-      .get("https://kku-git.github.io/nff_product/hair.json")
-      .then(() => {})
-      .catch(() => {});
-  }, [id]);
+      .get(`https://kku-git.github.io/nff_product/${category}.json`)
+      .then((res) => {
+        const item = res.data.find((item) => String(item.id) === id);
+        setProduct(item);
+      })
+      .catch(() => {
+        console.log("상품 데이터 불러오기 실패");
+      });
+  }, [category, id]);
 
+  if (!product) return <p>로딩중...</p>;
   return (
     <main>
       <Logo
@@ -27,8 +33,8 @@ function DetailContent(props) {
             <img src="/black-ring.jpg" alt="chess ring_khaki" />
           </div>
           <div className="product-info">
-            <p className="product-name">chess ring_khaki</p>
-            <p className="product-price">KRW 32,000</p>
+            <p className="product-name">{product.title}</p>
+            <p className="product-price">{product.price}</p>
             <p className="product-material">Material: pvc + resin</p>
             <p>
               해당 상품은 주문 제작 상품으로 <br />

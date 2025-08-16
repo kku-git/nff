@@ -19,6 +19,7 @@ function HairItems({ currentPage, itemsPerPage, updateTotalPages }) {
         console.log("실패함");
       });
   }, [itemsPerPage]);
+
   if (items.length === 0) {
     return <p>LOADING...</p>;
   }
