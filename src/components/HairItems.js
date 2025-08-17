@@ -30,9 +30,9 @@ function HairItems({ currentPage, itemsPerPage, updateTotalPages }) {
 
   return (
     <div className="item-container">
-      {currentItems.map((a, i) => {
+      {currentItems.map((a) => {
         return (
-          <div key={i} className="item">
+          <div key={a.id} className="item">
             <Link to={`/detail/hair/${a.id}`}>
               <div className="overlay-wrap">
                 <div className="overlay">
@@ -42,10 +42,8 @@ function HairItems({ currentPage, itemsPerPage, updateTotalPages }) {
               </div>
 
               <img
-                src={`https://kku-git.github.io/nff_product/hair/hair${
-                  startIndex + i
-                }.jpg`}
-                alt={`hair ${startIndex + i}`}
+                src={`https://kku-git.github.io/nff_product/hair/hair${a.id}.jpg`}
+                alt={a.title}
               />
             </Link>
           </div>
