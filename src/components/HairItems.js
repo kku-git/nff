@@ -43,9 +43,9 @@ function HairItems({ currentPage, itemsPerPage, updateTotalPages }) {
 
               <img
                 src={`https://kku-git.github.io/nff_product/hair/hair${
-                  startIndex + i + 1
+                  startIndex + i
                 }.jpg`}
-                alt={`hair ${startIndex + i + 1}`}
+                alt={`hair ${startIndex + i}`}
               />
             </Link>
           </div>

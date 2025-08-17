@@ -40,9 +40,9 @@ function NeckItems({ currentPage, itemsPerPage, updateTotalPages }) {
           </div>
           <img
             src={`https://kku-git.github.io/nff_product/neck/neck${
-              startIndex + i + 1
+              startIndex + i
             }.jpg`}
-            alt={`neck ${startIndex + i + 1}`}
+            alt={`neck ${startIndex + i}`}
           />
         </div>
       ))}

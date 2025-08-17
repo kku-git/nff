@@ -40,9 +40,9 @@ function FingerItems({ currentPage, itemsPerPage, updateTotalPages }) {
           </div>
           <img
             src={`https://kku-git.github.io/nff_product/fingers/ring${
-              startIndex + i + 1
+              startIndex + i
             }.jpg`}
-            alt={`ring ${startIndex + i + 1}`}
+            alt={`ring ${startIndex + i}`}
           />
         </div>
       ))}
