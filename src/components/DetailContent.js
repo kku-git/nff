@@ -21,6 +21,7 @@ function DetailContent(props) {
   }, [category, id]);
 
   if (!product) return <p>로딩중...</p>;
+
   return (
     <main>
       <Logo
@@ -30,7 +31,10 @@ function DetailContent(props) {
       <div className="detail-container">
         <div className="product-summary">
           <div className="product-image">
-            <img src="/black-ring.jpg" alt="chess ring_khaki" />
+            <img
+              src={`https://kku-git.github.io/nff_product/${category}/${category}${product.id}.jpg`}
+              alt={product.title}
+            />
           </div>
           <div className="product-info">
             <p className="product-name">{product.title}</p>
@@ -53,18 +57,23 @@ function DetailContent(props) {
               <img src="/dropdown-icon.svg" alt="" className="select-icon" />
             </div>
             <div className="action-buttons">
-              <button className="wishlist-button">
-                <img src="/heart-outline.svg" alt="" />
+              <button className="wishlist-button" onClick={() => {}}>
+                <img src="/heart-outline.svg" alt="wishlist" />
               </button>
-              <button className="buy-button">BUY</button>
-              <button className="add-button">ADD TO CART</button>
+              <button className="buy-button" onClick={() => {}}>
+                BUY
+              </button>
+              <button className="add-button" onClick={() => {}}>
+                ADD TO CART
+              </button>
             </div>
           </div>
         </div>
         <div className="product-detail">
-          <img src="/detail1.svg" alt="상세 이미지 1" />
-          <img src="/detail2.svg" alt="상세 이미지 2" />
-          <img src="/detail3.svg" alt="상세 이미지 3" />
+          <img
+            src={`https://kku-git.github.io/nff_product/${category}/${category}${id}_detail.jpg`}
+            alt={`상세 이미지 ${id}`}
+          />
         </div>
       </div>
 

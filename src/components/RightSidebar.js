@@ -15,7 +15,7 @@ function RightSidebar(props) {
           <Link to="/cart">CART</Link>
         </li>
         <li>
-          <Link to="/detail/:category/:id">ORDER</Link>
+          <Link to="/">ORDER</Link>
         </li>
         <li>
           <Link to="/wishlist">WISH LIST</Link>
