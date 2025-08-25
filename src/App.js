@@ -114,7 +114,7 @@ function App() {
         }
       />
       <Route
-        path="/shop/neck"
+        path="/shop/necklace"
         element={
           <NeckPage
             Search={Search}

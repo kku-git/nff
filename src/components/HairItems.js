@@ -12,6 +12,7 @@ function HairItems({ currentPage, itemsPerPage, updateTotalPages }) {
         const sorted = [...response.data].sort((a, b) => a.id - b.id); // 오름차순 정렬
         setOriginalData(sorted); // 원본 저장
         setVisibleData(sorted);
+
         // 총 페이지 수 계산 및 업데이트
         const totalPages = Math.ceil(sorted.length / itemsPerPage);
         updateTotalPages(totalPages); // 부모 컴포넌트에 페이지 수 업데이트

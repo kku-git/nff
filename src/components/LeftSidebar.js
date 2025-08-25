@@ -23,7 +23,7 @@ function LeftSidebar(props) {
                 <Link to="/shop/hair">for hair</Link>
               </li>
               <li onClick={() => props.handleCategoryChange("neck")}>
-                <Link to="/shop/neck">for neck</Link>
+                <Link to="/shop/necklace">for neck</Link>
               </li>
               <li onClick={() => props.handleCategoryChange("fingers")}>
                 <Link to="/shop/fingers">for fingers</Link>
