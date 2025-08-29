@@ -1,10 +1,28 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 
-let user = createSlice({
-  name: "user",
-  initialState: "김씨",
+let cart = createSlice({
+  name: "cart",
+  initialState: [],
+  reducers: {
+    // 상품 추가 및 수량 증가 - 이미 있으면 수량 증가, 없으면 상품 추가
+    addItem: function (state, action) {},
+
+    // 상품 삭제
+    removeItem: function (state, action) {},
+
+    // 수량 감소 및 수량 1일 경우 상품 삭제
+    decreaseItem: function (state, action) {},
+
+    // 단순한 수량 증가 + 버튼
+    addCount: function (state, action) {},
+
+    // 단순한 수량 감소 - 버튼
+    decreaseCount: function (state, action) {},
+  },
 });
 
 export default configureStore({
-  reducer: {},
+  reducer: { cart: cart.reducer },
 });
+
+export let {} = cart.actions;
