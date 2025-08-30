@@ -5,7 +5,17 @@ let cart = createSlice({
   initialState: [],
   reducers: {
     // 상품 추가 및 수량 증가 - 이미 있으면 수량 증가, 없으면 상품 추가
-    addItem: function (state, action) {},
+    addItem: function (state, action) {
+      const newItem = action.payload;
+      const found = state.find((item) => item.id === newItem.id);
+
+      if (found) {
+        found.count++;
+      } else {
+        state.push(newItem);
+      }
+      
+    },
 
     // 상품 삭제
     removeItem: function (state, action) {},
@@ -25,4 +35,5 @@ export default configureStore({
   reducer: { cart: cart.reducer },
 });
 
-export let {} = cart.actions;
+export let { addItem, removeItem, decreaseItem, addCount, decreaseCount } =
+  cart.actions;
