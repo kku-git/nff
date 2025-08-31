@@ -3,8 +3,18 @@ import Footer from "./Footer";
 import Logo from "./Logo";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import {
+  addItem,
+  removeItem,
+  decreaseItem,
+  addCount,
+  decreaseCount,
+} from "./../store.js";
+import { useDispatch } from "react-redux";
 
 function DetailContent(props) {
+  let dispatch = useDispatch();
+
   const { category, id } = useParams();
   const [product, setProduct] = useState(null);
 
@@ -47,21 +57,20 @@ function DetailContent(props) {
               핸드메이드 특성상 컬러, 패턴 및 형태가 <br />
               일정하지 않은 점 참고 바랍니다.
             </p>{" "}
-            <div className="select-wrapper">
-              <select className="size-select">
-                <option value="">사이즈를 선택해주세요</option>
-                <option value="S">S</option>
-                <option value="M">M</option>
-                <option value="L">L</option>
-              </select>
-              <img src="/dropdown-icon.svg" alt="" className="select-icon" />
-            </div>
+            {category === "fingers" && (
+              <div className="select-wrapper">
+                <select className="size-select">
+                  <option value="">사이즈를 선택해주세요</option>
+                  <option value="S">S</option>
+                  <option value="M">M</option>
+                  <option value="L">L</option>
+                </select>
+                <img src="/dropdown-icon.svg" alt="" className="select-icon" />
+              </div>
+            )}
             <div className="action-buttons">
               <button className="wishlist-button" onClick={() => {}}>
                 <img src="/heart-outline.svg" alt="wishlist" />
-              </button>
-              <button className="buy-button" onClick={() => {}}>
-                BUY
               </button>
               <button className="add-button" onClick={() => {}}>
                 ADD TO CART
