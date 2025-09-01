@@ -4,11 +4,12 @@ import Logo from "./Logo";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import {
-  addItem,
-  removeItem,
-  decreaseItem,
+  addCartItem,
+  removeCartItem,
   addCount,
   decreaseCount,
+  addWishlistItem,
+  removeWishlistItem,
 } from "./../store.js";
 import { useDispatch } from "react-redux";
 
@@ -56,7 +57,7 @@ function DetailContent(props) {
               <br />
               핸드메이드 특성상 컬러, 패턴 및 형태가 <br />
               일정하지 않은 점 참고 바랍니다.
-            </p>{" "}
+            </p>
             {category === "fingers" && (
               <div className="select-wrapper">
                 <select className="size-select">
@@ -69,10 +70,20 @@ function DetailContent(props) {
               </div>
             )}
             <div className="action-buttons">
-              <button className="wishlist-button" onClick={() => {}}>
+              <button
+                className="wishlist-button"
+                onClick={() => {
+                  dispatch(addWishlistItem(product));
+                }}
+              >
                 <img src="/heart-outline.svg" alt="wishlist" />
               </button>
-              <button className="add-button" onClick={() => {}}>
+              <button
+                className="add-button"
+                onClick={() => {
+                  dispatch(addCartItem({ ...product, count: 1 }));
+                }}
+              >
                 ADD TO CART
               </button>
             </div>
