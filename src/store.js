@@ -1,5 +1,6 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 
+// 장바구니
 let cart = createSlice({
   name: "cart",
   initialState: [],
@@ -37,7 +38,7 @@ let cart = createSlice({
     },
 
     // 장바구니 비우기
-    clearCart: function (state, action) {
+    clearCart: function () {
       return [];
     },
   },
@@ -48,20 +49,43 @@ let wishlist = createSlice({
   initialState: [],
   reducers: {
     // 상품 추가 - 위시리스트 목록에 없으면 상품 추가 / 이미 있으면 무시 - 하트버튼
+    addItem: function (state, action) {
+      const newItem = action.payload;
+      const found = state.find((item) => item.id === newItem.id);
+      if (!found) {
+        state.push(newItem);
+      }
+    },
+
     // 상품 삭제
     removeItem: function (state, action) {
       return state.filter((item) => item.id !== action.payload);
     },
+
     // 위시리스트 비우기
-    clearWishlist: function (state, action) {
+    clearWishlist: function () {
       return [];
     },
+
     // 위시리스트에 있는 상품목록들 장바구니(cart)로 이동
+    //컴포넌트에서 dispatch 두 번으로 처리
   },
 });
+
 export default configureStore({
-  reducer: { cart: cart.reducer },
+  reducer: { cart: cart.reducer, wishlist: wishlist.reducer },
 });
 
-export let { addItem, removeItem, decreaseItem, addCount, decreaseCount } =
-  cart.actions;
+export const {
+  addItem: addCartItem,
+  addCount,
+  decreaseCount,
+  clearCart,
+  removeItem: removeCartItem, // cart용 삭제
+} = cart.actions;
+
+export const {
+  addItem: addWishlistItem, // (만들면 이렇게 별칭으로)
+  removeItem: removeWishlistItem, // wishlist용 삭제
+  clearWishlist,
+} = wishlist.actions;
