@@ -14,7 +14,7 @@ import {
 import { useDispatch } from "react-redux";
 
 function DetailContent(props) {
-  let dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const { category, id } = useParams();
   const [product, setProduct] = useState(null);
@@ -81,7 +81,7 @@ function DetailContent(props) {
               <button
                 className="add-button"
                 onClick={() => {
-                  dispatch(addCartItem({ ...product, count: 1 }));
+                  dispatch(addCartItem({ ...product, count: 1, category }));
                 }}
               >
                 ADD TO CART
