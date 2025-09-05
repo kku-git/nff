@@ -3,14 +3,7 @@ import Footer from "./Footer";
 import Logo from "./Logo";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import {
-  addCartItem,
-  removeCartItem,
-  addCount,
-  decreaseCount,
-  addWishlistItem,
-  removeWishlistItem,
-} from "./../store.js";
+import { addCartItem, addWishlistItem } from "./../store.js";
 import { useDispatch } from "react-redux";
 
 function DetailContent(props) {
@@ -73,7 +66,7 @@ function DetailContent(props) {
               <button
                 className="wishlist-button"
                 onClick={() => {
-                  dispatch(addWishlistItem(product));
+                  dispatch(addWishlistItem({ ...product, category }));
                 }}
               >
                 <img src="/heart-outline.svg" alt="wishlist" />

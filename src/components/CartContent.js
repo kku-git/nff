@@ -11,6 +11,8 @@ import {
 function CartContent(props) {
   const cartItems = useSelector((state) => state.cart);
   const dispatch = useDispatch();
+  // 배송비
+  const deliveryFee = 0;
 
   return (
     <main>
@@ -24,7 +26,7 @@ function CartContent(props) {
           <p className="cart-title">CART</p>
           <div className="cart-actions">
             <button
-              className="deselect-all"
+              className="delete-all"
               onClick={() => {
                 dispatch(clearCart());
               }}
@@ -35,51 +37,53 @@ function CartContent(props) {
         </div>
 
         <div className="cart-items">
-          {cartItems.map((item) => (
-            <div className="cart-item" key={item.id}>
-              <div className="item-image">
-                <img
-                  src={`https://kku-git.github.io/nff_product/${item.category}/${item.category}${item.id}.jpg`}
-                  alt={item.title}
-                />
-              </div>
-              <div className="item-info">
-                <div className="name-price">
-                  <p className="item-name">{item.title}</p>
-                  <p className="item-price">{item.price}</p>
+          {cartItems.map((item) => {
+            return (
+              <div className="cart-item" key={item.id}>
+                <div className="item-image">
+                  <img
+                    src={`https://kku-git.github.io/nff_product/${item.category}/${item.category}${item.id}.jpg`}
+                    alt={item.title}
+                  />
                 </div>
-                <div className="item-count">
+                <div className="item-info">
+                  <div className="name-price">
+                    <p className="item-name">{item.title}</p>
+                    <p className="item-price">{item.price}</p>
+                  </div>
+                  <div className="item-count">
+                    <button
+                      className="quantity-minus"
+                      onClick={() => dispatch(decreaseCount(item.id))}
+                    >
+                      <img src="/minus.svg" alt="minus" />
+                    </button>
+                    <span className="quantity-number">{item.count}</span>
+                    <button
+                      className="quantity-plus"
+                      onClick={() => dispatch(addCount(item.id))}
+                    >
+                      <img src="/plus.svg" alt="plus" />
+                    </button>
+                  </div>
+                </div>
+                <div className="item-remove">
                   <button
-                    className="quantity-minus"
-                    onClick={() => dispatch(decreaseCount(item.id))}
+                    className="remove-button"
+                    onClick={() => dispatch(removeCartItem(item.id))}
                   >
-                    <img src="/minus.svg" alt="minus" />
-                  </button>
-                  <span className="quantity-number">{item.count}</span>
-                  <button
-                    className="quantity-plus"
-                    onClick={() => dispatch(addCount(item.id))}
-                  >
-                    <img src="/plus.svg" alt="plus" />
+                    삭제
                   </button>
                 </div>
               </div>
-              <div className="item-remove">
-                <button
-                  className="remove-button"
-                  onClick={() => dispatch(removeCartItem(item.id))}
-                >
-                  삭제
-                </button>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         <div className="cart-summary">
           <div className="summary-row">
             <span>배송비</span>
-            <span>KRW 0</span>
+            <span>KRW {deliveryFee.toLocaleString()}</span>
           </div>
           <div className="summary-row">
             <span>총 상품금액</span>
