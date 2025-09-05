@@ -14,6 +14,18 @@ function CartContent(props) {
   // 배송비
   const deliveryFee = 0;
 
+  // 총 금액 계산
+  function parsePrice(str) {
+    // "KRW 32,000" → "32,000" → "32000" → 32000 (숫자)
+    const noKRW = str.replace("KRW ", ""); // "32,000"
+    const noComma = noKRW.replace(",", ""); // "32000"
+    return Number(noComma); // 숫자로 변환
+  }
+  const totalPrice = cartItems.reduce((sum, item) => {
+    return sum + parsePrice(item.price) * item.count;
+  }, 0);
+  const grandTotal = totalPrice + deliveryFee;
+
   return (
     <main>
       <Logo
@@ -87,7 +99,7 @@ function CartContent(props) {
           </div>
           <div className="summary-row">
             <span>총 상품금액</span>
-            <span>KRW 48,000</span>
+            <span>{grandTotal.toLocaleString()}</span>
           </div>
         </div>
 
