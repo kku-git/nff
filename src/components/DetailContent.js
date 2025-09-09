@@ -4,13 +4,13 @@ import Logo from "./Logo";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { addCartItem, addWishlistItem } from "./../store.js";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 function DetailContent(props) {
   const dispatch = useDispatch();
-
   const { category, id } = useParams();
   const [product, setProduct] = useState(null);
+  const wishListItems = useSelector((state) => state.wishlist);
 
   useEffect(() => {
     axios
