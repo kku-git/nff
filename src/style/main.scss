@@ -261,6 +261,14 @@ header {
   }
 }
 
+// 빈 상품
+.empty-item {
+  display: flex;
+  justify-content: center;
+  padding: 1.39vw;
+  border-bottom: 1px solid $main_color;
+}
+
 // 장바구니
 .cart-container {
   width: 100%;

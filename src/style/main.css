@@ -242,6 +242,13 @@ header .ticker-wrap .ticker li {
   gap: 15px;
 }
 
+.empty-item {
+  display: flex;
+  justify-content: center;
+  padding: 1.39vw;
+  border-bottom: 1px solid #da7c98;
+}
+
 .cart-container {
   width: 100%;
   margin-bottom: 7.06rem;

@@ -21,9 +21,11 @@ function CartContent(props) {
     const noComma = noKRW.replace(",", ""); // "32000"
     return Number(noComma); // 숫자로 변환
   }
+
   const totalPrice = cartItems.reduce((sum, item) => {
     return sum + parsePrice(item.price) * item.count;
   }, 0);
+
   const grandTotal = totalPrice + deliveryFee;
 
   return (
@@ -32,7 +34,8 @@ function CartContent(props) {
         setLeftSidebarToggle={props.setLeftSidebarToggle}
         setRightSidebarToggle={props.setRightSidebarToggle}
       />
-      {/* 장바구니*/}
+
+      {/* 장바구니 */}
       <div className="cart-container">
         <div className="cart-header">
           <p className="cart-title">CART</p>
@@ -48,49 +51,54 @@ function CartContent(props) {
           </div>
         </div>
 
-        <div className="cart-items">
-          {cartItems.map((item) => {
-            return (
-              <div className="cart-item" key={item.id}>
-                <div className="item-image">
-                  <img
-                    src={`https://kku-git.github.io/nff_product/${item.category}/${item.category}${item.id}.jpg`}
-                    alt={item.title}
-                  />
-                </div>
-                <div className="item-info">
-                  <div className="name-price">
-                    <p className="item-name">{item.title}</p>
-                    <p className="item-price">{item.price}</p>
+        {/* 장바구니 아이템 */}
+        {cartItems.length === 0 ? (
+          <p className="empty-item">장바구니가 비어있어요.</p>
+        ) : (
+          <div className="cart-items">
+            {cartItems.map((item) => {
+              return (
+                <div className="cart-item" key={item.id}>
+                  <div className="item-image">
+                    <img
+                      src={`https://kku-git.github.io/nff_product/${item.category}/${item.category}${item.id}.jpg`}
+                      alt={item.title}
+                    />
                   </div>
-                  <div className="item-count">
+                  <div className="item-info">
+                    <div className="name-price">
+                      <p className="item-name">{item.title}</p>
+                      <p className="item-price">{item.price}</p>
+                    </div>
+                    <div className="item-count">
+                      <button
+                        className="quantity-minus"
+                        onClick={() => dispatch(decreaseCount(item.id))}
+                      >
+                        <img src="/minus.svg" alt="minus" />
+                      </button>
+                      <span className="quantity-number">{item.count}</span>
+                      <button
+                        className="quantity-plus"
+                        onClick={() => dispatch(addCount(item.id))}
+                      >
+                        <img src="/plus.svg" alt="plus" />
+                      </button>
+                    </div>
+                  </div>
+                  <div className="item-remove">
                     <button
-                      className="quantity-minus"
-                      onClick={() => dispatch(decreaseCount(item.id))}
+                      className="remove-button"
+                      onClick={() => dispatch(removeCartItem(item.id))}
                     >
-                      <img src="/minus.svg" alt="minus" />
-                    </button>
-                    <span className="quantity-number">{item.count}</span>
-                    <button
-                      className="quantity-plus"
-                      onClick={() => dispatch(addCount(item.id))}
-                    >
-                      <img src="/plus.svg" alt="plus" />
+                      삭제
                     </button>
                   </div>
                 </div>
-                <div className="item-remove">
-                  <button
-                    className="remove-button"
-                    onClick={() => dispatch(removeCartItem(item.id))}
-                  >
-                    삭제
-                  </button>
-                </div>
-              </div>
-            );
-          })}
-        </div>
+              );
+            })}
+          </div>
+        )}
 
         <div className="cart-summary">
           <div className="summary-row">
