@@ -3,13 +3,18 @@ import Footer from "./Footer";
 import Logo from "./Logo";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { addCartItem, addWishlistItem } from "./../store.js";
+import {
+  addCartItem,
+  addWishlistItem,
+  removeWishlistItem,
+} from "./../store.js";
 import { useDispatch, useSelector } from "react-redux";
 
 function DetailContent(props) {
   const dispatch = useDispatch();
   const { category, id } = useParams();
   const [product, setProduct] = useState(null);
+  // 위시리스트 배열 갖고오기
   const wishListItems = useSelector((state) => state.wishlist);
 
   useEffect(() => {
@@ -25,6 +30,22 @@ function DetailContent(props) {
   }, [category, id]);
 
   if (!product) return <p>로딩중...</p>;
+
+  const isWished = wishListItems.some(
+    (item) => item.id === product.id && item.category === category
+  );
+
+  // 하트 위시리시트 토글 함수
+  const toggleWishlistItem = () => {
+    console.log("하트 클릭됨"); // 🔍 이거 넣어봐!
+    if (isWished) {
+      console.log("삭제 실행");
+      dispatch(removeWishlistItem({ id: product.id, category }));
+    } else {
+      console.log("추가 실행");
+      dispatch(addWishlistItem({ ...product, category }));
+    }
+  };
 
   return (
     <main>
@@ -66,10 +87,13 @@ function DetailContent(props) {
               <button
                 className="wishlist-button"
                 onClick={() => {
-                  dispatch(addWishlistItem({ ...product, category }));
+                  toggleWishlistItem();
                 }}
               >
-                <img src="/heart-outline.svg" alt="wishlist" />
+                <img
+                  src={isWished ? "/heart-filled.svg" : "/heart-outline.svg"}
+                  alt="wishlist"
+                />
               </button>
               <button
                 className="add-button"

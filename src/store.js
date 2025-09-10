@@ -59,7 +59,11 @@ let wishlist = createSlice({
 
     // 상품 삭제
     removeItem: function (state, action) {
-      return state.filter((item) => item.id !== action.payload);
+      return state.filter(
+        (item) =>
+          item.id !== action.payload.id ||
+          item.category !== action.payload.category
+      );
     },
 
     // 위시리스트 비우기
