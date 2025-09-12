@@ -7,13 +7,12 @@ let cart = createSlice({
   reducers: {
     // 상품 추가 및 수량 증가 - 이미 있으면 수량 증가, 없으면 상품 추가
     addItem: function (state, action) {
-      const newItem = action.payload;
-      const found = state.find((item) => item.id === newItem.id);
+      const found = state.find((item) => item.id === action.payload.id);
 
       if (found) {
         found.count++;
       } else {
-        state.push(newItem);
+        state.push(action.payload);
       }
     },
 
@@ -50,10 +49,9 @@ let wishlist = createSlice({
   reducers: {
     // 상품 추가 - 위시리스트 목록에 없으면 상품 추가 / 이미 있으면 무시 - 하트버튼
     addItem: function (state, action) {
-      const newItem = action.payload;
-      const found = state.find((item) => item.id === newItem.id);
+      const found = state.find((item) => item.id === action.payload.id);
       if (!found) {
-        state.push(newItem);
+        state.push(action.payload);
       }
     },
 

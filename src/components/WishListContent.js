@@ -51,7 +51,7 @@ function WishListContent(props) {
                     <button
                       className="trash-button"
                       onClick={() => {
-                        dispatch(removeWishlistItem(item.id));
+                        dispatch(removeWishlistItem(item));
                       }}
                     >
                       <img src="/trash.svg"></img>
