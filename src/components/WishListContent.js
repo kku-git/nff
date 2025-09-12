@@ -31,7 +31,7 @@ function WishListContent(props) {
 
         {/* 위시리스트 아이템 */}
         {wishListItems.length === 0 ? (
-          <p className="empty-item">위시리스트가 비어있어요.</p>
+          <p className="empty-item">위시리스트가 비어있습니다.</p>
         ) : (
           <div className="wish-items">
             {wishListItems.map((item) => {
@@ -60,7 +60,8 @@ function WishListContent(props) {
                       className="cart-button"
                       onClick={() => {
                         dispatch(addCartItem({ ...item, count: 1 }));
-                        dispatch(removeWishlistItem(item.id));
+                        dispatch(removeWishlistItem(item));
+                        alert("장바구니에 담았습니다.");
                       }}
                     >
                       <img src="/cart.svg"></img>
@@ -73,18 +74,21 @@ function WishListContent(props) {
         )}
 
         {/* 위시리스트 푸터 */}
-        <div className="wish-footer">
-          <button
-            className="checkout-button"
-            onClick={() => {
-              wishListItems.forEach((item) => {
-                dispatch(addCartItem({ ...item, count: 1 }));
-                dispatch(clearWishlist());
-              });
-            }}
-          >
-            전체 상품 주문
-          </button>
+        <div
+          className="wish-footer"
+          onClick={() => {
+            if (wishListItems.length === 0) {
+              alert("위시리스트를 담아주세요.");
+              return;
+            }
+            wishListItems.forEach((item) => {
+              dispatch(addCartItem({ ...item, count: 1 }));
+            });
+            dispatch(clearWishlist());
+            alert("모든 위시리스트 상품이 장바구니에 담겼습니다.");
+          }}
+        >
+          <button className="checkout-button">전체 상품 주문</button>
         </div>
       </div>
 
