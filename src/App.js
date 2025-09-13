@@ -8,6 +8,7 @@ import HairPage from "./pages/HairPage";
 import CartPage from "./pages/CartPage";
 import WishListPage from "./pages/WishListPage";
 import DetailPage from "./pages/DetailPage";
+import LoginPage from "./pages/LoginPage";
 
 function App() {
   // 사이드바 열고 닫기
@@ -175,6 +176,25 @@ function App() {
         path="/detail/:category/:id"
         element={
           <DetailPage
+            Search={Search}
+            setSearch={setSearch}
+            isShopHovered={isShopHovered}
+            setIsShopHovered={setIsShopHovered}
+            isBoardHovered={isBoardHovered}
+            setIsBoardHovered={setIsBoardHovered}
+            handleCategoryChange={handleCategoryChange}
+            leftSidebarToggle={leftSidebarToggle}
+            setLeftSidebarToggle={setLeftSidebarToggle}
+            rightSidebarToggle={rightSidebarToggle}
+            setRightSidebarToggle={setRightSidebarToggle}
+          />
+        }
+      />
+
+      <Route
+        path="/login"
+        element={
+          <LoginPage
             Search={Search}
             setSearch={setSearch}
             isShopHovered={isShopHovered}

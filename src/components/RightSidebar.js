@@ -9,7 +9,7 @@ function RightSidebar(props) {
     >
       <ul className="category">
         <li>
-          <Link to="/">LOGIN</Link>
+          <Link to="/login">LOGIN</Link>
         </li>
         <li>
           <Link to="/cart">CART</Link>

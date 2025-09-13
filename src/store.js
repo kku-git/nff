@@ -1,4 +1,5 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
+import user from "./store/userSlice";
 
 // 장바구니
 let cart = createSlice({
@@ -75,7 +76,11 @@ let wishlist = createSlice({
 });
 
 export default configureStore({
-  reducer: { cart: cart.reducer, wishlist: wishlist.reducer },
+  reducer: {
+    cart: cart.reducer,
+    wishlist: wishlist.reducer,
+    user: user,
+  },
 });
 
 export const {

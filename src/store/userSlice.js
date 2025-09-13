@@ -1,7 +1,7 @@
 // src/userSlice.js
 import { createSlice } from "@reduxjs/toolkit";
 
-let userSlice = createSlice({
+let user = createSlice({
   name: "user",
   initialState: {
     isLoggedIn: false,
@@ -18,6 +18,6 @@ let userSlice = createSlice({
     },
   },
 });
+export const { login, logout } = user.actions; // ✅ 여기서 export
 
-export const { login, logout } = userSlice.actions;
-export default userSlice.reducer;
+export default user.reducer;
