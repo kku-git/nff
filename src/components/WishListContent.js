@@ -1,7 +1,8 @@
 import Footer from "./Footer";
 import Logo from "./Logo";
 import { useSelector, useDispatch } from "react-redux";
-import { removeWishlistItem, clearWishlist, addCartItem } from "./../store.js";
+import { removeWishlistItem, clearWishlist } from "../store/wishlistSlice";
+import { addCartItem } from "../store/cartSlice";
 
 function WishListContent(props) {
   const wishListItems = useSelector((state) => state.wishlist);

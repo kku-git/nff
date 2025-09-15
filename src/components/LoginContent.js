@@ -1,7 +1,7 @@
 import Footer from "./Footer";
 import Logo from "./Logo";
 import { useDispatch, useSelector } from "react-redux";
-import { login, logout } from "./../store/userSlice.js";
+import { login, logout } from "../store/userSlice";
 import { useState } from "react";
 
 function LoginContent(props) {

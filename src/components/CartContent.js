@@ -6,7 +6,7 @@ import {
   addCount,
   decreaseCount,
   clearCart,
-} from "./../store.js";
+} from "../store/cartSlice";
 
 function CartContent(props) {
   const cartItems = useSelector((state) => state.cart);

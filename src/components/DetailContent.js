@@ -3,11 +3,8 @@ import Footer from "./Footer";
 import Logo from "./Logo";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import {
-  addCartItem,
-  addWishlistItem,
-  removeWishlistItem,
-} from "./../store.js";
+import { addCartItem } from "../store/cartSlice";
+import { addWishlistItem, removeWishlistItem } from "../store/wishlistSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 function DetailContent(props) {
