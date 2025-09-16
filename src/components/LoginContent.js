@@ -12,10 +12,10 @@ function LoginContent(props) {
   const handleLogin = () => {
     if (username.trim() === "") {
       alert("아이디를 입력해주세요!");
-      return;
+    } else {
+      dispatch(login({ name: username }));
+      alert(`${username}님 로그인 되었습니다!`);
     }
-    dispatch(login({ name: username })); // 입력한 값 저장
-    alert(`${username}님 로그인 되었습니다!`);
   };
 
   const handleLogout = () => {
@@ -31,7 +31,7 @@ function LoginContent(props) {
       />
       {isLoggedIn ? (
         <div>
-          <h2>{userInfo?.name}님 환영합니다 🎉</h2>
+          <h2>{userInfo.name}님 환영합니다 🎉</h2>
           <button onClick={handleLogout}>로그아웃</button>
         </div>
       ) : (
