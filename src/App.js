@@ -9,6 +9,7 @@ import CartPage from "./pages/CartPage";
 import WishListPage from "./pages/WishListPage";
 import DetailPage from "./pages/DetailPage";
 import LoginPage from "./pages/LoginPage";
+import { useSelector } from "react-redux";
 
 function App() {
   // 사이드바 열고 닫기
@@ -48,6 +49,7 @@ function App() {
   function handleCategoryChange(category) {
     setCurrentCategory(category);
   }
+  const LoggedIn = useSelector((state) => state.user.LoggedIn);
 
   return (
     <Routes>
@@ -157,19 +159,23 @@ function App() {
       <Route
         path="/wishlist"
         element={
-          <WishListPage
-            Search={Search}
-            setSearch={setSearch}
-            isShopHovered={isShopHovered}
-            setIsShopHovered={setIsShopHovered}
-            isBoardHovered={isBoardHovered}
-            setIsBoardHovered={setIsBoardHovered}
-            handleCategoryChange={handleCategoryChange}
-            leftSidebarToggle={leftSidebarToggle}
-            setLeftSidebarToggle={setLeftSidebarToggle}
-            rightSidebarToggle={rightSidebarToggle}
-            setRightSidebarToggle={setRightSidebarToggle}
-          />
+          LoggedIn ? (
+            <WishListPage
+              Search={Search}
+              setSearch={setSearch}
+              isShopHovered={isShopHovered}
+              setIsShopHovered={setIsShopHovered}
+              isBoardHovered={isBoardHovered}
+              setIsBoardHovered={setIsBoardHovered}
+              handleCategoryChange={handleCategoryChange}
+              leftSidebarToggle={leftSidebarToggle}
+              setLeftSidebarToggle={setLeftSidebarToggle}
+              rightSidebarToggle={rightSidebarToggle}
+              setRightSidebarToggle={setRightSidebarToggle}
+            />
+          ) : (
+            <Navigate to="/login" />
+          )
         }
       />
       <Route

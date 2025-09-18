@@ -1,6 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function RightSidebar(props) {
+  const LoggedIn = useSelector((state) => state.user.LoggedIn);
+  const navigate = useNavigate();
+
   return (
     <aside
       className={`sidebar sidebar-right ${props.className}`}
@@ -18,7 +22,18 @@ function RightSidebar(props) {
           <Link to="/">ORDER</Link>
         </li>
         <li>
-          <Link to="/wishlist">WISH LIST</Link>
+          <button
+            onClick={() => {
+              if (!LoggedIn) {
+                alert("로그인 후 이용해주세요");
+                navigate("/login");
+              } else {
+                navigate("/wishlist");
+              }
+            }}
+          >
+            WISH LIST
+          </button>
         </li>
         <li>
           <Link to="/">MY PAGE</Link>

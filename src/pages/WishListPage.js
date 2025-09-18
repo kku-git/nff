@@ -3,8 +3,21 @@ import LeftSidebar from "../components/LeftSidebar";
 import RightSidebar from "../components/RightSidebar";
 import SearchOverlay from "../components/SearchOverlay";
 import WishListContent from "../components/WishListContent";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function WishListPage(props) {
+  const LoggedIn = useSelector((state) => state.user.LoggedIn);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!LoggedIn) {
+      alert("로그인 후 이용해주세요!");
+      navigate("/login");
+    }
+  }, [LoggedIn]);
+
   return (
     <div className="wrapper">
       {/* 검색창 */}
@@ -28,10 +41,12 @@ function WishListPage(props) {
         />
 
         {/* 중앙 메인 콘텐츠 */}
-        <WishListContent
-          setLeftSidebarToggle={props.setLeftSidebarToggle}
-          setRightSidebarToggle={props.setRightSidebarToggle}
-        />
+        {LoggedIn && (
+          <WishListContent
+            setLeftSidebarToggle={props.setLeftSidebarToggle}
+            setRightSidebarToggle={props.setRightSidebarToggle}
+          />
+        )}
 
         {/* 우측 aside */}
         <RightSidebar
