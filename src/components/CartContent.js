@@ -16,10 +16,9 @@ function CartContent(props) {
 
   // 총 금액 계산
   function parsePrice(str) {
-    // "KRW 32,000" → "32,000" → "32000" → 32000 (숫자)
-    const noKRW = str.replace("KRW ", ""); // "32,000"
-    const noComma = noKRW.replace(",", ""); // "32000"
-    return Number(noComma); // 숫자로 변환
+    const noKRW = str.replace("KRW ", "");
+    const noComma = noKRW.replace(",", "");
+    return Number(noComma);
   }
 
   const totalPrice = cartItems.reduce((sum, item) => {
