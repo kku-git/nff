@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { addCartItem } from "../store/cartSlice";
 import { addWishlistItem, removeWishlistItem } from "../store/wishlistSlice";
 import { useDispatch, useSelector } from "react-redux";
-
+// 여기서부터 해야함
 function DetailContent(props) {
   const dispatch = useDispatch();
   const { category, id } = useParams();
