@@ -174,7 +174,7 @@ function App() {
               setRightSidebarToggle={setRightSidebarToggle}
             />
           ) : (
-            <Navigate to="/login" />
+            <Navigate to="/login" replace />
           )
         }
       />
