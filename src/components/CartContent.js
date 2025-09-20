@@ -84,6 +84,9 @@ function CartContent(props) {
                         <img src="/plus.svg" alt="plus" />
                       </button>
                     </div>
+                    <div>
+                      <p>사이즈: M</p>
+                    </div>
                   </div>
                   <div className="item-remove">
                     <button

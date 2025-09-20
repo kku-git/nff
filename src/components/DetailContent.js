@@ -6,13 +6,19 @@ import { useEffect, useState } from "react";
 import { addCartItem } from "../store/cartSlice";
 import { addWishlistItem, removeWishlistItem } from "../store/wishlistSlice";
 import { useDispatch, useSelector } from "react-redux";
-// 여기서부터 해야함
+import { useNavigate } from "react-router-dom";
+
 function DetailContent(props) {
   const dispatch = useDispatch();
   const { category, id } = useParams();
   const [product, setProduct] = useState(null);
+
   // 위시리스트 배열 갖고오기
   const wishListItems = useSelector((state) => state.wishlist);
+
+  // 사용자 로그인 여부 확인
+  const LoggedIn = useSelector((state) => state.user.LoggedIn);
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -34,7 +40,11 @@ function DetailContent(props) {
 
   // 하트 위시리시트 토글 함수
   const toggleWishlistItem = () => {
-    console.log("하트 클릭됨"); // 🔍 이거 넣어봐!
+    if (!LoggedIn) {
+      alert("로그인 후 이용해주세요!");
+      navigate("/login");
+      return;
+    }
     if (isWished) {
       console.log("삭제 실행");
       dispatch(removeWishlistItem({ id: product.id, category }));
