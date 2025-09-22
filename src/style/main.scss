@@ -309,28 +309,42 @@ header {
   width: 10.42vw;
   border: 1px solid #ca7991;
 }
-.item-info p {
-  font-size: 1vw;
-}
+
 .item-info {
   display: flex;
   flex-direction: column;
   gap: 20px;
-}
-.name-price {
-  flex-direction: column;
-  display: flex;
-  gap: 10px;
-}
-.item-count {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1vw;
-  gap: 20px;
-  button img {
-    width: 1.25vw;
-    height: 1.25vw;
+
+  p {
+    font-size: 1vw;
+  }
+
+  .name-price {
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .item-count {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1vw;
+    gap: 20px;
+    button img {
+      width: 1.25vw;
+      height: 1.25vw;
+    }
+  }
+
+  .size-button {
+    color: $black;
+
+    &:hover {
+      background-color: $main_color;
+      color: #fff;
+    }
   }
 }
 
@@ -384,6 +398,49 @@ button {
   padding: 0.694vw;
   border: 1px solid transparent;
   font-size: 1vw;
+}
+
+// 사이즈 옵션 모달창
+.size-modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  z-index: 1000;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid black;
+  width: 300px;
+  height: 305px;
+  gap: 16px;
+
+  .option-title {
+    font-size: 14px; //14px
+    font-weight: normal;
+    color: $text_color;
+    background-color: $black;
+    width: 100%;
+    padding: 10px 0;
+  }
+
+  .name-price {
+    img {
+      width: 100px;
+      height: 100px;
+    }
+    p {
+      font-weight: bold;
+    }
+  }
+
+  .modal-buttons {
+    button {
+      background-color: $black;
+      padding: 10px;
+    }
+  }
 }
 
 // 위시리스트

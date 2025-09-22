@@ -7,6 +7,7 @@ import {
   decreaseCount,
   clearCart,
 } from "../store/cartSlice";
+import { useState } from "react";
 
 function CartContent(props) {
   const cartItems = useSelector((state) => state.cart);
@@ -26,6 +27,9 @@ function CartContent(props) {
   }, 0);
 
   const grandTotal = totalPrice + deliveryFee;
+
+  // 사이즈 창 토글
+  const [sizeModalOpen, setSizeModalOpen] = useState(false);
 
   return (
     <main>
@@ -85,7 +89,51 @@ function CartContent(props) {
                       </button>
                     </div>
                     <div>
-                      <p>사이즈: M</p>
+                      <button
+                        className="size-button"
+                        onClick={() => {
+                          setSizeModalOpen(!sizeModalOpen);
+                        }}
+                      >
+                        사이즈: M
+                      </button>
+                      {/* 사이즈 버튼 클릭 시 보여줄 팝업창 */}
+                      {sizeModalOpen && (
+                        <div
+                          className="size-modal"
+                          onClick={() => setSizeModalOpen(false)}
+                        >
+                          <h2 className="option-title">옵션 변경</h2>
+                          <div className="name-price">
+                            <img src="/black-ring.jpg"></img>
+                            <p>chess ring_kakki</p>
+                          </div>
+
+                          <div className="select-wrapper">
+                            <select className="size-select">
+                              <option value="">사이즈를 선택해주세요</option>
+                              <option value="S">S</option>
+                              <option value="M">M</option>
+                              <option value="L">L</option>
+                            </select>
+                            <img
+                              src="/dropdown-icon.svg"
+                              alt=""
+                              className="select-icon"
+                            />
+                          </div>
+
+                          <div className="modal-buttons">
+                            <button>변경</button>
+                            <button
+                              className="close-button"
+                              onClick={() => setSizeModalOpen(false)}
+                            >
+                              닫기
+                            </button>
+                          </div>
+                        </div>
+                      )}
                     </div>
                   </div>
                   <div className="item-remove">
