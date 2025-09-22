@@ -99,10 +99,7 @@ function CartContent(props) {
                       </button>
                       {/* 사이즈 버튼 클릭 시 보여줄 팝업창 */}
                       {sizeModalOpen && (
-                        <div
-                          className="size-modal"
-                          onClick={() => setSizeModalOpen(false)}
-                        >
+                        <div className="size-modal">
                           <h2 className="option-title">옵션 변경</h2>
                           <div className="name-price">
                             <img src="/black-ring.jpg"></img>
