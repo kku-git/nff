@@ -11,8 +11,12 @@ function DetailContent(props) {
   const dispatch = useDispatch();
   const { category, id } = useParams();
   const [product, setProduct] = useState(null);
+
   // 위시리스트 배열 갖고오기
   const wishListItems = useSelector((state) => state.wishlist);
+
+  // 사이즈 선택 저장 변수
+  const [selectedSize, setSelectedSize] = useState("");
 
   useEffect(() => {
     axios
@@ -71,7 +75,11 @@ function DetailContent(props) {
             </p>
             {category === "fingers" && (
               <div className="select-wrapper">
-                <select className="size-select">
+                <select
+                  className="size-select"
+                  value={selectedSize}
+                  onChange={(e) => setSelectedSize(e.target.value)}
+                >
                   <option value="">사이즈를 선택해주세요</option>
                   <option value="S">S</option>
                   <option value="M">M</option>
