@@ -40,6 +40,16 @@ let cart = createSlice({
     clearCart: function () {
       return [];
     },
+
+    // 반지 사이즈 상태 업데이트
+    updateItemSize: (state, action) => {
+      const { id, size } = action.payload;
+      const found = state.find((item) => item.id === id);
+
+      if (found) {
+        found.size = size;
+      }
+    },
   },
 });
 
@@ -47,8 +57,9 @@ export const {
   addCartItem,
   addCount,
   decreaseCount,
-  clearCart,
   removeCartItem,
+  clearCart,
+  updateItemSize,
 } = cart.actions;
 
 export default cart.reducer;

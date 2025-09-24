@@ -6,6 +6,7 @@ import {
   addCount,
   decreaseCount,
   clearCart,
+  updateItemSize,
 } from "../store/cartSlice";
 import { useState } from "react";
 
@@ -30,6 +31,9 @@ function CartContent(props) {
 
   // 사이즈 창 토글
   const [sizeModalOpen, setSizeModalOpen] = useState(false);
+
+  // 사이즈 변경 변수
+  const [selectedSize, setSelectedSize] = useState("");
 
   return (
     <main>
@@ -89,39 +93,72 @@ function CartContent(props) {
                       </button>
                     </div>
                     <div>
-                      <button
-                        className="size-button"
-                        onClick={() => {
-                          setSizeModalOpen(!sizeModalOpen);
-                        }}
-                      >
-                        사이즈: M
-                      </button>
+                      {item.category === "fingers" ? (
+                        <button
+                          className="size-button"
+                          onClick={() => {
+                            setSizeModalOpen(!sizeModalOpen);
+                          }}
+                        >
+                          사이즈: {item.size || "선택안됨"}
+                        </button>
+                      ) : null}
+
                       {/* 사이즈 버튼 클릭 시 보여줄 팝업창 */}
                       {sizeModalOpen && (
                         <div className="size-modal">
                           <h2 className="option-title">옵션 변경</h2>
                           <div className="name-price">
-                            <img src="/black-ring.jpg"></img>
-                            <p>chess ring_kakki</p>
+                            <img
+                              src={`https://kku-git.github.io/nff_product/${item.category}/${item.category}${item.id}.jpg`}
+                              alt={item.title}
+                            />
+                            <p>{item.title}</p>
                           </div>
 
-                          <div className="select-wrapper">
-                            <select className="size-select">
-                              <option value="">사이즈를 선택해주세요</option>
-                              <option value="S">S</option>
-                              <option value="M">M</option>
-                              <option value="L">L</option>
-                            </select>
-                            <img
-                              src="/dropdown-icon.svg"
-                              alt=""
-                              className="select-icon"
-                            />
-                          </div>
+                          {item.category === "fingers" && (
+                            <div className="select-wrapper">
+                              <select
+                                className="size-select"
+                                value={selectedSize}
+                                onChange={(e) =>
+                                  setSelectedSize(e.target.value)
+                                }
+                              >
+                                <option value="" disabled>
+                                  사이즈를 선택해주세요
+                                </option>
+                                <option value="S">S</option>
+                                <option value="M">M</option>
+                                <option value="L">L</option>
+                              </select>
+                              <img
+                                src="/dropdown-icon.svg"
+                                alt="드롭다운 화살표"
+                                className="select-icon"
+                              />
+                            </div>
+                          )}
 
                           <div className="modal-buttons">
-                            <button>변경</button>
+                            <button
+                              onClick={() => {
+                                if (selectedSize === "") {
+                                  alert("사이즈를 선택해주세요.");
+                                  return;
+                                }
+
+                                dispatch(
+                                  updateItemSize({
+                                    id: item.id,
+                                    size: selectedSize,
+                                  })
+                                );
+                                setSizeModalOpen(false);
+                              }}
+                            >
+                              변경
+                            </button>
                             <button
                               className="close-button"
                               onClick={() => setSizeModalOpen(false)}
