@@ -30,7 +30,8 @@ function CartContent(props) {
   const grandTotal = totalPrice + deliveryFee;
 
   // 사이즈 창 토글
-  const [sizeModalOpen, setSizeModalOpen] = useState(false);
+  // const [sizeModalOpen, setSizeModalOpen] = useState(false);
+  const [openItemId, setOpenItemId] = useState(null);
 
   // 사이즈 변경 변수
   const [selectedSize, setSelectedSize] = useState("");
@@ -97,15 +98,18 @@ function CartContent(props) {
                         <button
                           className="size-button"
                           onClick={() => {
-                            setSizeModalOpen(!sizeModalOpen);
+                            setOpenItemId(item.id);
+                            setSelectedSize(item.size);
                           }}
                         >
                           사이즈: {item.size || "선택안됨"}
                         </button>
-                      ) : null}
+                      ) : (
+                        <p>사이즈: One Size</p>
+                      )}
 
                       {/* 사이즈 버튼 클릭 시 보여줄 팝업창 */}
-                      {sizeModalOpen && (
+                      {openItemId === item.id && (
                         <div className="size-modal">
                           <h2 className="option-title">옵션 변경</h2>
                           <div className="name-price">
@@ -154,14 +158,14 @@ function CartContent(props) {
                                     size: selectedSize,
                                   })
                                 );
-                                setSizeModalOpen(false);
+                                setOpenItemId(null);
                               }}
                             >
                               변경
                             </button>
                             <button
                               className="close-button"
-                              onClick={() => setSizeModalOpen(false)}
+                              onClick={() => setOpenItemId(null)}
                             >
                               닫기
                             </button>
